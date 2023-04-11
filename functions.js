@@ -81,15 +81,17 @@ let i = 0;
 // similar to python order matters revNum is inside the function outside the while loop
 
 function bin() {
-    getNumber();
-    while (numero1 != 0) {
-        modu = numero1 % 2;
-        array.push(modu);
-        numero1 = Math.floor(numero1 / 2);
+    if (document.getElementById('firstInput').value != '') {
+        let array = [];
+        getNumber();
+        while (numero1 != 0) {
+            modu = numero1 % 2;
+            array.push(modu);
+            numero1 = Math.floor(numero1 / 2);
+        }
+        result = array.reverse().join("");
+        document.getElementById('firstInput').value = result;
     }
-    result = array.reverse().join("");
-    document.getElementById('firstInput').value = result;
-    
 }
 
 //remember to call the function PLEASE!!!
@@ -99,15 +101,17 @@ function bin() {
 //-----------------------------------------
 
 function octal() {
-    getNumber();
-    while (numero1 != 0) {
-        modu = numero1 % 8;
-        array.push(modu);
-        numero1 = Math.floor(numero1 / 8);
+    if (document.getElementById('firstInput').value != '') {
+        let array = [];
+        getNumber();
+        while (numero1 != 0) {
+            modu = numero1 % 8;
+            array.push(modu);
+            numero1 = Math.floor(numero1 / 8);
+        }
+        result = array.reverse().join("");
+        document.getElementById('firstInput').value = result;
     }
-    result = array.reverse().join("");
-    document.getElementById('firstInput').value = result;
-    
 }
 
 // octal();
@@ -115,22 +119,24 @@ function octal() {
 //---------------------------------------
 
 function hexa() {
-    getNumber();
-    while (numero1 != 0) {
-        modu = numero1 % 16;
-        array.push(modu);
-        numero1 = Math.floor(numero1 / 16);
+    if (document.getElementById('firstInput').value != '') {
+        let array = [];
+        getNumber();
+        while (numero1 != 0) {
+            modu = numero1 % 16;
+            array.push(modu);
+            numero1 = Math.floor(numero1 / 16);
+        }
+        revNum16 = array.reverse();
+        for (i in revNum16) {
+            if (revNum16[i] == 10) { revNum16[i] = `A`; }
+            else if (revNum16[i] == 11) { (revNum16[i] = `B`); }
+            else if (revNum16[i] == 12) { (revNum16[i] = `C`); }
+            else if (revNum16[i] == 13) { (revNum16[i] = `D`); }
+            else if (revNum16[i] == 14) { (revNum16[i] = `E`); }
+        }
+        document.getElementById('firstInput').value = revNum16.join('');
     }
-    revNum16 = array.reverse();
-    for (i in revNum16) {
-        if (revNum16[i] == 10) { revNum16[i] = `A`; }
-        else if (revNum16[i] == 11) { (revNum16[i] = `B`); }
-        else if (revNum16[i] == 12) { (revNum16[i] = `C`); }
-        else if (revNum16[i] == 13) { (revNum16[i] = `D`); }
-        else if (revNum16[i] == 14) { (revNum16[i] = `E`); }
-    }
-    
-    document.getElementById('firstInput').value = revNum16.join('');
 }
 
 // hexa();
