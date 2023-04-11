@@ -1,4 +1,3 @@
-// import * as operations from './operation.js';
 //adding comment for the commit message
 var numero1, numero2, result;
 var option;
