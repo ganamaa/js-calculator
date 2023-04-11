@@ -4,6 +4,7 @@ var numero1, numero2, result;
 var option;
 
 //ibamos bien el unico error era que no puede tener el mismo nombre que el id
+//complete las otras operaciones con los que tenias
 var operations = "operation.js";
 function equalsOperation() {
     let num2 = document.getElementById('firstInput');
@@ -31,6 +32,7 @@ function equalsOperation() {
             alert(`Perdon, se espera una operacion ${option}.`);
     }
     num2.value = result;
+    option = null;
 }
 
 function getNumber() {
