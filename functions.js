@@ -1,62 +1,93 @@
+// import * as operations from './operation.js';
 //adding comment for the commit message
+var numero1, numero2, result;
+var option;
 
-var operation = "";
-var numero1;
-var numero2;
-function add(){
-    let num1 = document.getElementById('firstInput');
-    numero1 = num1.value;
-    num1.value = '';
-    operation = "suma";
-}
-
-function equals(){
-    console.log("llegue")
+//ibamos bien el unico error era que no puede tener el mismo nombre que el id
+var operations = "operation.js";
+function equalsOperation() {
     let num2 = document.getElementById('firstInput');
-    numero2 = num2.value;
-    //document.getElementById('firstInput').value = parseInt(numero1+numero2);
-    console.log(numero1);
+    numero2 = parseFloat(num2.value);
+    switch (option) {
+        case '+':
+            result = numero1 + numero2;
+            break;
+        case '-':
+            result = numero1 - numero2;
+            break;
+        case '*':
+            result = numero1 * numero2;
+            break;
+        case '/':
+            result = numero1 / numero2;
+            break;
+        case '^':
+            result = numero1 ** numero2;
+            break;
+        case 'sqrt':
+            result = numero1 ** (1 / numero2);
+            break;
+        default:
+            alert(`Perdon, se espera una operacion ${option}.`);
+    }
+    num2.value = result;
 }
 
-// eventlstener en el + => leo el mismo inout 
-
-function substract(num1,num2){
-    return num1 - num2;
+function getNumber() {
+    let num1 = document.getElementById('firstInput');
+    numero1 = parseFloat(num1.value);
+    num1.value = '';
 }
 
-function divide(num1,num2){
-    return num1 / num2;
+function add() {
+    getNumber()
+    option = '+';
 }
 
-function multiply(num1,num2){
-    return num1 * num2;
+function substract() {
+    getNumber()
+    option = '-';
 }
 
-function power(num1,num2){
-    return num1**num2;
+function divide() {
+    getNumber()
+    option = '/';
 }
 
-function sqrt(num1,num2){
-    return num1**(1/num2);
+function multiply() {
+    getNumber()
+    option = '*';
 }
+
+function power() {
+    getNumber()
+    option = '^';
+}
+
+function sqrt() {
+    getNumber()
+    option = 'sqrt';
+}
+
 
 //the following are dummy numbers to check the functionality of the functions below
 
-let num = 30;
 
 var array = [];
-i=0;
+let i = 0;
 
 // similar to python order matters revNum is inside the function outside the while loop
 
-function bin(){
-    alert(2);
-    while (num!=0){
-        modu = num % 2;
+function bin() {
+    getNumber();
+    while (numero1 != 0) {
+        modu = numero1 % 2;
         array.push(modu);
-        num = Math.floor(num/2);
+        numero1 = Math.floor(numero1 / 2);
     }
-    revNum2 = array.reverse();
+    result = array.reverse().join("");
+    document.getElementById('firstInput').value = result;
+    
 }
 
 //remember to call the function PLEASE!!!
@@ -65,38 +96,42 @@ function bin(){
 // alert(revNum2);
 //-----------------------------------------
 
-function octal(){
-    alert(8);
-    while (num!=0){
-        modu = num % 8;
+function octal() {
+    getNumber();
+    while (numero1 != 0) {
+        modu = numero1 % 8;
         array.push(modu);
-        num = Math.floor(num/8);
+        numero1 = Math.floor(numero1 / 8);
     }
-    revNum8 = array.reverse();
+    result = array.reverse().join("");
+    document.getElementById('firstInput').value = result;
+    
 }
 
 // octal();
 // alert(revNum8);
 //---------------------------------------
 
-function hexa(){
-    alert(16);
-    while (num!=0){
-        modu = num % 16;
+function hexa() {
+    getNumber();
+    while (numero1 != 0) {
+        modu = numero1 % 16;
         array.push(modu);
-        num = Math.floor(num/16);
+        numero1 = Math.floor(numero1 / 16);
     }
     revNum16 = array.reverse();
-    for (i in revNum16){
-         if (revNum16[i] == 10) {revNum16[i] = `A`;}
-         else if (revNum16[i] == 11) {(revNum16[i] = `B`);}
-         else if (revNum16[i] == 12) {(revNum16[i] = `C`);}
-         else if (revNum16[i] == 13) {(revNum16[i] = `D`);}
-         else if (revNum16[i] == 14) {(revNum16[i] = `E`);}
+    for (i in revNum16) {
+        if (revNum16[i] == 10) { revNum16[i] = `A`; }
+        else if (revNum16[i] == 11) { (revNum16[i] = `B`); }
+        else if (revNum16[i] == 12) { (revNum16[i] = `C`); }
+        else if (revNum16[i] == 13) { (revNum16[i] = `D`); }
+        else if (revNum16[i] == 14) { (revNum16[i] = `E`); }
     }
+    
+    document.getElementById('firstInput').value = revNum16.join('');
 }
 
 // hexa();
 // alert(revNum16);
 
-plus.addEventListener('click', alert(10));
+// plus.addEventListener('click', alert(10));
